@@ -28,7 +28,9 @@ RUN npm install --only=production
 
 # Copy built application from builder stage
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/public ./public
+
+# Copy public folder if it exists
+COPY public ./public
 
 # Expose port
 EXPOSE 3000
